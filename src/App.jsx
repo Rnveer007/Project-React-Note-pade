@@ -22,7 +22,7 @@ function App() {
   }
   return (
     <>
-      <div className='bg-gray-200 h-screen' >
+      <div className='bg-cyan-200 h-screen' >
         <h1 className='text-center py-3 font-bold underline text-3xl '> * NotePad *</h1>
         <div className='flex justify-center'>
           <form onSubmit={addNote} className='border-2 p-3 h-[700px] w-[800px]  bg-cyan-200'>
@@ -40,7 +40,6 @@ function App() {
                 </div>
               })
             }
-
           </div>
         </div>
       </div>
