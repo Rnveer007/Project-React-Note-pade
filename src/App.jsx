@@ -12,7 +12,10 @@ function App() {
 
   function addNote(e) {
     e.preventDefault();
-    const obj = { id: Date.now(), note: textAreaInput, color: colorInput };
+    const obj = {
+      id: Date.now(), note: textAreaInput,
+      color: colorInput, date: new Date().toLocaleString()
+    };
     setNotes([...notes, obj]);
     setTextAreaInput('');
     setColorInput('')
@@ -23,9 +26,9 @@ function App() {
   return (
     <>
       <div className=' h-screen' >
-        <h1 className='text-center py-3 font-bold text-3xl '> * NotePad *</h1>
-        <div className='flex justify-center'>
-          <form onSubmit={addNote} className='border-2 p-3 h-[700px] w-[800px] '  style={{ backgroundColor: "#DAD2FF" }}>
+
+        <div className='flex'>
+          <form onSubmit={addNote} className=' p-3 h-screen w-[840px] ' style={{ backgroundColor: "#DAD2FF" }}>
             <textarea name="" id="" placeholder='Add Your Notes' value={textAreaInput} onChange={(e) => setTextAreaInput(e.target.value)} className='border-2 border-green-800 h-[300px] w-[700px] p-4 capitalize font-bold' required> </textarea> <br />
             <input type="color" name="" id="" value={colorInput} onChange={(e) => setColorInput(e.target.value)} required className='cursor-pointer' />
             <div>
@@ -33,10 +36,24 @@ function App() {
             </div>
           </form>
 
-          <div className='bg-gray-400 h-[700px] w-[800px]'>
+          <div className='bg-gray-400 h-screen w-[840px]'>
+            <div className='flex items-center justify-center gap-20'>
+              <h1 className='text-center py-4 text-2xl'>Your Notes Are Here</h1>
+              <h1 className='cursor-pointer text-2xl '>Undo</h1>
+            </div>
             {
               notes.map((item) => {
-                return <div key={item.id} style={{ backgroundColor: item.color }} className='h-[80px] w-[800px] pt-2 capitalize font-bold  flex items-center justify-between px-4'> <h1 className='pl-5'> {item.note}</h1><span> <MdDeleteForever onClick={() => dltNote(item.id)} className='items-center text-3xl cursor-pointer' /></span>
+
+                return <div className='h-[90px] w-[840px] pt-2 capitalize font-bold justify-between px-4' style={{ backgroundColor: item.color }}>
+                  <div key={item.id}
+
+                    className=' flex items-center justify-between px-4 mb-4'>
+                    <h1 className='pl-5'> {item.note}</h1>
+                    <span> <MdDeleteForever onClick={() => dltNote(item.id)}
+                      className='items-center text-3xl cursor-pointer' />
+                    </span>
+                  </div>
+                  <div>{item.date}</div>
                 </div>
               })
             }
