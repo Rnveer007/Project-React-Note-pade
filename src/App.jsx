@@ -12,7 +12,7 @@ function App() {
 
   function addNote(e) {
     e.preventDefault();
-    const obj = { id: Date.now(), note: textAreaInput, color: colorInput};
+    const obj = { id: Date.now(), note: textAreaInput, color: colorInput };
     setNotes([...notes, obj]);
     setTextAreaInput('');
     setColorInput('')
@@ -22,14 +22,14 @@ function App() {
   }
   return (
     <>
-      <div className='bg-cyan-200 h-screen' >
-        <h1 className='text-center py-3 font-bold underline text-3xl '> * NotePad *</h1>
+      <div className=' h-screen' >
+        <h1 className='text-center py-3 font-bold text-3xl '> * NotePad *</h1>
         <div className='flex justify-center'>
-          <form onSubmit={addNote} className='border-2 p-3 h-[700px] w-[800px]  bg-cyan-200'>
-            <textarea name="" id="" placeholder='Add Your Notes' value={textAreaInput} onChange={(e) => setTextAreaInput(e.target.value)} className='border-2 border-green-800 h-[300px] w-[700px] p-4 capitalize font-bold' required> </textarea>
+          <form onSubmit={addNote} className='border-2 p-3 h-[700px] w-[800px] '  style={{ backgroundColor: "#DAD2FF" }}>
+            <textarea name="" id="" placeholder='Add Your Notes' value={textAreaInput} onChange={(e) => setTextAreaInput(e.target.value)} className='border-2 border-green-800 h-[300px] w-[700px] p-4 capitalize font-bold' required> </textarea> <br />
             <input type="color" name="" id="" value={colorInput} onChange={(e) => setColorInput(e.target.value)} required className='cursor-pointer' />
             <div>
-              <button type='submit' className='border-2 px-3 mt-4 bg-black text-white py-1 px-7 cursor-pointer'>Add</button>
+              <button type='submit' className='rounded-full mt-4 bg-amber-400  py-1 px-7 cursor-pointer'>Add</button>
             </div>
           </form>
 
