@@ -9,6 +9,7 @@ function App() {
   const [notes, setNotes] = useState([]);
   // console.log(notes)
   const [colorInput, setColorInput] = useState('');
+  const [undo, setUndo] = useState([])
 
   function addNote(e) {
     e.preventDefault();
@@ -22,6 +23,13 @@ function App() {
   }
   function dltNote(id) {
     setNotes(notes.filter((div) => div.id !== id))
+  }
+
+  function undoNotes() {
+    const noteItems = notes
+    const lastCreated = noteItems.pop();
+    setUndo((prev) => [...prev, lastCreated])
+
   }
   return (
     <>
@@ -39,7 +47,7 @@ function App() {
           <div className='bg-gray-400 h-screen w-[840px]'>
             <div className='flex items-center justify-center gap-20'>
               <h1 className='text-center py-4 text-2xl'>Your Notes Are Here</h1>
-              <h1 className='cursor-pointer text-2xl '>Undo</h1>
+              <h1 onClick={undoNotes} className='cursor-pointer text-2xl '>Undo</h1>
             </div>
             {
               notes.map((item) => {
