@@ -51,18 +51,28 @@ function App() {
             </div>
             {
               notes.map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="relative border-2 h-[150px] w-[300px] pt-2 capitalize font-bold justify-between px-4 transition-all duration-300 hover:shadow-lg group overflow-hidden"
+                    style={{ backgroundColor: item.color }}
+                  >
+                    {/* Date - Hidden initially, moves to top on hover */}
+                    <div className="absolute top-[151px] left-0 w-full text-center bg-black text-white py-1 text-sm transition-all duration-500 ease-in-out group-hover:top-[118px] ">
+                      {item.date}
+                    </div>
 
-                return <div className='h-[90px] w-[840px] pt-2 capitalize font-bold justify-between px-4' style={{ backgroundColor: item.color }}>
-                  <div key={item.id}
-
-                    className=' flex items-center justify-between px-4 mb-4'>
-                    <h1 className='pl-5'> {item.note}</h1>
-                    <span> <MdDeleteForever onClick={() => dltNote(item.id)}
-                      className='items-center text-3xl cursor-pointer' />
-                    </span>
+                    <div className="flex pt-4 justify-between mb-4 h-[120px] overflow-y-scroll overflow-x-hidden break-words">
+                      <h1 className="pl-5">{item.note}</h1>
+                      <span>
+                        <MdDeleteForever
+                          onClick={() => dltNote(item.id)}
+                          className="items-center text-3xl cursor-pointer"
+                        />
+                      </span>
+                    </div>
                   </div>
-                  <div>{item.date}</div>
-                </div>
+                );
               })
             }
           </div>
